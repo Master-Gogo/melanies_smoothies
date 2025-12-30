@@ -38,8 +38,8 @@ if ingradient_list:
         ingradient_string=ingradient_string+fruit_choosen+' '
         search_on=pd_df.loc[pd_df['FRUIT_NAME'] == fruit_choosen, 'SEARCH_ON'].iloc[0]
         st.write('The search value for ', fruit_choosen,' is ', search_on, '.')
-        st.subheader(fruit_choosen + 'Nutrition information')
-        smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/"+ fruit_choosen)
+        st.subheader(fruit_choosen + ' Nutrition information')
+        smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/{search_on}")
         sf_df=st.dataframe(smoothiefroot_response.json(), use_container_width=True)
     #st.write(ingradient_string)
     my_insert_stmt = """ insert into smoothies.public.orders(ingredients, name_on_order)
