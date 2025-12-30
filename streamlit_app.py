@@ -32,7 +32,8 @@ if ingradient_list:
     ingradient_string=''
     for fruit_choosen in ingradient_list:
         ingradient_string=ingradient_string+fruit_choosen+' '
-        smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+        st.subheader(fruit_choosen + 'Nutrition information')
+        smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/"+ fruit_choosen)
         sf_df=st.dataframe(smoothiefroot_response.json(), use_container_width=True)
     #st.write(ingradient_string)
     my_insert_stmt = """ insert into smoothies.public.orders(ingredients, name_on_order)
